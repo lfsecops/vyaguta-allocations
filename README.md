@@ -1,7 +1,5 @@
 # Vyaguta Allocations Pipeline
 
-> Created for SecOps @ Leapfrog Technology
-
 Fetches employee allocations from Vyaguta and produces consolidated JSON outputs grouped by employee and by project/area.
 
 ## Prerequisites
@@ -18,7 +16,7 @@ Fetches employee allocations from Vyaguta and produces consolidated JSON outputs
 VYAGUTA_TOKEN="<your-token>" ./run.sh
 ```
 
-Get a token from [Vyaguta](https://vyaguta.lftechnology.com) → browser DevTools → Network tab → copy the `Authorization: Bearer ...` header value.
+Get a token from Vyaguta → browser DevTools → Network tab → copy the `Authorization: Bearer ...` header value.
 
 ## What it does
 
@@ -31,51 +29,6 @@ Get a token from [Vyaguta](https://vyaguta.lftechnology.com) → browser DevTool
 | 5 | Group by project and area | `grouped.json` |
 
 Date range is automatically set to today → +18 months.
-
-## Outputs
-
-### output.json — grouped by employee
-
-```json
-{
-  "data": [
-    {
-      "employeeID": 1003,
-      "employeeName": "user@lftechnology.com",
-      "allocations": [
-        {
-          "allocationID": 8473,
-          "startDate": "2025-07-01",
-          "endDate": null,
-          "potentialEndDate": "2026-05-29",
-          "allocation": 35,
-          "allocationType": "project",
-          "projectName": "Vyaguta"
-        }
-      ]
-    }
-  ]
-}
-```
-
-### grouped.json — grouped by project/area
-
-```json
-{
-  "projects": {
-    "Laudio": { "count": 58, "employees": [...] }
-  },
-  "areas": {
-    "Development": { "count": 21, "employees": [...] }
-  },
-  "summary": {
-    "totalProjects": 45,
-    "totalAreas": 28,
-    "totalProjectAllocations": 427,
-    "totalAreaAllocations": 123
-  }
-}
-```
 
 ## Verify fetched data
 
